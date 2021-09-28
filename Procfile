@@ -1,1 +1,1 @@
-web: gunicorn Query.wsgi
+web: gunicorn Huggies.wsgi
