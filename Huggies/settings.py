@@ -180,6 +180,6 @@ cloudinary.config(
 
 
 
-SOCKET_SERVER = config('SOCKET_SERVER')
+SOCKET_SERVER = 'http://localhost:9000/server'
 
 django_heroku.settings(locals())
