@@ -1,0 +1,323 @@
+QUERY API DOCUMENTATION
+
+question
+
+1. Get Profiles --------> api/profiles/
+
+var formdata = new FormData();
+
+var requestOptions = {
+  method: 'GET',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/profiles/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+
+
+response =
+
+{
+    "count": 5,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "id": 1,
+            "user": {
+                "id": 1,
+                "username": "Truth"
+            },
+            "firstname": "Joshua",
+            "lastname": "Henry",
+            "sex": "male",
+            "department": "Computer Science",
+            "level": "300L",
+            "institution": "Imo state university",
+            "description": "An Anime Fan",
+            "profile_pic": "image/upload/photos/2021/09/26/IMG_7955.jpg",
+            "longtitude": null,
+            "latitude": null
+        },
+        {
+            "id": 2,
+            "user": {
+                "id": 2,
+                "username": "prince"
+            },
+            "firstname": "Eze",
+            "lastname": "igbe",
+            "sex": "male",
+            "department": "micro biology",
+            "level": "400L",
+            "institution": "Imo state university",
+            "description": "a a soccer fan",
+            "profile_pic": "",
+            "longtitude": null,
+            "latitude": null
+        },
+        {
+            "id": 3,
+            "user": {
+                "id": 3,
+                "username": "prince2"
+            },
+            "firstname": "",
+            "lastname": "",
+            "sex": "",
+            "department": "",
+            "level": "",
+            "institution": "",
+            "description": "",
+            "profile_pic": "",
+            "longtitude": null,
+            "latitude": null
+        },
+        {
+            "id": 4,
+            "user": {
+                "id": 4,
+                "username": "zulu"
+            },
+            "firstname": "",
+            "lastname": "",
+            "sex": "",
+            "department": "",
+            "level": "",
+            "institution": "",
+            "description": "",
+            "profile_pic": "",
+            "longtitude": null,
+            "latitude": null
+        },
+        {
+            "id": 5,
+            "user": {
+                "id": 5,
+                "username": "king"
+            },
+            "firstname": "crown",
+            "lastname": "",
+            "sex": "male",
+            "department": "xhhjjjsjss",
+            "level": "100L",
+            "institution": "ssasasas",
+            "description": "sqqsdssdsdsd",
+            "profile_pic": "",
+            "longtitude": null,
+            "latitude": null
+        }
+    ]
+}
+
+
+
+2. Get profiles_id --------> api/profiles/1/
+
+var formdata = new FormData();
+
+var requestOptions = {
+  method: 'GET',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/profiles/1/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+response =
+
+"results": [
+{
+          "id": 1,
+        "user": {
+        "id": 1,
+        "username": "Truth"
+        },
+        "firstname": "Joshua",
+        "lastname": "Henry",
+        "sex": "male",
+        "department": "Computer Science",
+        "level": "300L",
+        "institution": "Imo state university",
+        "description": "An Anime Fan",
+        "profile_pic": "image/upload/photos/2021/09/26/IMG_7955.jpg",
+        "longtitude": null,
+        "latitude": null
+    ]
+  },
+}
+
+
+
+3. Put profiles ----------> api/profiles/
+
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MTA1NDc2LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MTA1MTc2fQ.bvj2dIyR9ceLSjoGhkMDco-7RHSHuBPAqu8erPow-_g");
+
+var formdata = new FormData();
+formdata.append("firstname", "Daniel");
+formdata.append("lastname", "zucci");
+formdata.append("sex","female")
+formdata.append("department","Bio chemist")
+formdata.append("level", 100l)
+formdata.append("institution","university of Lagos state")
+formdata.append("description","A very serious student")
+formdata.append("profile_pic",""image/upload/photos/2021/09/26/IMG_7955.jpg")
+formdata.append("longtitude":"13332344454")
+formdata.append(latitude":"-1223322333344)
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/profiles/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+
+
+Authentication
+
+1. Sign up -------> api/account/register/
+
+var myHeaders = new Headers();
+myHeaders.append("Authorization", "JWT " + eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkFkYW0iLCJleHAiOjE2MjQwNTYyODEsImVtYWlsIjoiQWRhbUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYyNDA1NTk4MX0.B5Hzk6KsWMlLiSvjVT25ZVM8nfhJZ2WBke3D-owxdeA);
+
+var formdata = new FormData();
+formdata.append("username", "Adam");
+formdata.append("password", "vocabulary");
+formdata.append("email", "Adam@gmail.com");
+
+var requestOptions = {
+  method: 'POST',
+  headers: myHeaders,
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/register/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+response
+
+{
+    "username": "Adam",
+    "email": "Adam@gmail.com",
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjo0LCJ1c2VybmFtZSI6IlByZXR0eSIsImV4cCI6MTYyNDExNTUyNywiZW1haWwiOiJwcmV0dHlAZ21haWwuY29tIiwib3JpZ19pYXQiOjE2MjQxMTUyMjd9.hMCAVCIM5ctJNdippaep-STEoy0fW4zi-khAtPEbKoY",
+    "expires": "2021-06-26T15:03:47.383386Z",
+    "message": "Thank you for registering. Please verify your email before continuing",
+    "status_code": {
+        "detail": "Successfully deleted",
+        "status": 200
+    }
+}
+
+
+2. Sign in ---------> api/account/
+
+var formdata = new FormData();
+formdata.append("username", "Adam");
+formdata.append("password", "vocabulary");
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/account/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+response
+
+{
+    "response": {
+        "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkFkYW0iLCJleHAiOjE2MjQxMTU2MzksImVtYWlsIjoiQWRhbUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYyNDExNTMzOX0.EvRApwH0mBPgfZB424F7lSHvclbOc98rnT96XBKzQyo",
+        "user": "Adam",
+        "expires": "2021-06-26T15:05:39.980809Z"
+    },
+    "detail": "Successfully logged in",
+    "status_code": 200
+}
+
+
+
+3. refresh_token  ----------> api/account/refresh/
+
+
+var formdata = new FormData();
+formdata.append("token", "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkFkYW0iLCJleHAiOjE2MjQxMTU2MzksImVtYWlsIjoiQWRhbUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYyNDExNTMzOX0.EvRApwH0mBPgfZB424F7lSHvclbOc98rnT96XBKzQyo");
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/account/refresh/", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+response
+
+{
+    "token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkFkYW0iLCJleHAiOjE2MjQxMTU3MjEsImVtYWlsIjoiQWRhbUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYyNDExNTMzOX0.CQDjS8uzBNqQr657mXRAJnUrHapclSqUZMxCRDjUjrg",
+    "user": "Adam",
+    "expires": "2021-06-26T15:07:01.407536Z"
+}
+
+
+
+
+
+pagination  --------> api/question/?limit=(limit number)
+
+
+var formdata = new FormData();
+
+var requestOptions = {
+  method: 'GET',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("https://huggiys.herokuapp.com/api/question/?limit=5", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+
+
+
+
+
+
+
+
+
+
+
+
