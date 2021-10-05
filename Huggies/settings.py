@@ -180,6 +180,6 @@ cloudinary.config(
 
 
 
-SOCKET_SERVER = config("SOCKET_SERVER")
+SOCKET_SERVER = config('SOCKET_SERVER')
 
 django_heroku.settings(locals())
