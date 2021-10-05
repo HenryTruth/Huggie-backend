@@ -11,7 +11,6 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
@@ -47,8 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'profiles',
+    'message',
+    'contact',
+
+    #third party
     'rest_framework',
     "corsheaders",
+    
 ]
 
 MIDDLEWARE = [
@@ -62,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'Huggies.urls'
 
@@ -141,6 +146,21 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS')
+
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'accept-encoding',
+    'x-csrftoken',
+    'access-control-allow-origin',
+    'content-disposition'
+)
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Default primary key field type
@@ -158,6 +178,8 @@ cloudinary.config(
 #   secure = True
 )
 
-SOCKET_SERVER = 'http://localhost:9000/server'
+
+
+SOCKET_SERVER = config("SOCKET_SERVER")
 
 django_heroku.settings(locals())
