@@ -15,8 +15,13 @@ from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+<<<<<<< HEAD
 from decouple import config
 import django_heroku
+=======
+import django_heroku
+from decouple import config
+>>>>>>> master
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,8 +32,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECRET_KEY = 'django-insecure-!#)@_9cklm-eo&-=np&q=ct$xu5_v8^ep1l_g+unlw5#r)3-3e'
+<<<<<<< HEAD
 SECRET_KEY = config("SECRET_KEY")
 # 5432
+=======
+SECRET_KEY = config('SECRET_KEY')
+
+>>>>>>> master
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -178,8 +188,12 @@ cloudinary.config(
 #   secure = True
 )
 
+<<<<<<< HEAD
 
 
 SOCKET_SERVER = config("SOCKET_SERVER")
+=======
+SOCKET_SERVER = 'http://localhost:9000/server'
+>>>>>>> master
 
 django_heroku.settings(locals())
