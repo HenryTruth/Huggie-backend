@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils import timezone
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
@@ -20,7 +21,7 @@ class Profile(models.Model):
         ('600L','600L'),
         ('700L', '700L')
     )
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(User, related_name="user_profile",on_delete=models.CASCADE)
     firstname = models.CharField(max_length=100, blank=True)
     lastname = models.CharField(max_length=100,blank=True)
     sex = models.CharField(max_length=10, choices=SEX_TYPES)
@@ -31,6 +32,12 @@ class Profile(models.Model):
     profile_pic = CloudinaryField('image')
     longtitude = models.IntegerField(null=True,blank=True)
     latitude = models.IntegerField(null=True,blank=True)
+    is_online = models.DateTimeField(default=timezone.now)
+
+
+
+    class Meta:
+        ordering = ['-is_online']
 
 
     def __str__(self):

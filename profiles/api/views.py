@@ -22,6 +22,9 @@ generics.ListAPIView):
             qs = qs.filter(content__icontains=query)
         return qs
 
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
     def perform_create(self):
         return serializers.save(self.request.user)
 

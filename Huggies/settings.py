@@ -11,11 +11,12 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 import os
-
 from pathlib import Path
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
+from decouple import config
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,8 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-!#)@_9cklm-eo&-=np&q=ct$xu5_v8^ep1l_g+unlw5#r)3-3e'
-
+# SECRET_KEY = 'django-insecure-!#)@_9cklm-eo&-=np&q=ct$xu5_v8^ep1l_g+unlw5#r)3-3e'
+SECRET_KEY = config("SECRET_KEY")
+# 5432
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -44,8 +46,13 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'account',
     'profiles',
+    'message',
+    'contact',
+
+    #third party
     'rest_framework',
     "corsheaders",
+    
 ]
 
 MIDDLEWARE = [
@@ -59,6 +66,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
 
 ROOT_URLCONF = 'Huggies.urls'
 
@@ -138,6 +146,21 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS')
+
+
+CORS_ALLOW_HEADERS = (
+    'x-requested-with',
+    'content-type',
+    'accept',
+    'origin',
+    'authorization',
+    'accept-encoding',
+    'x-csrftoken',
+    'access-control-allow-origin',
+    'content-disposition'
+)
+
 CORS_ALLOW_ALL_ORIGINS = True
 
 # Default primary key field type
@@ -154,3 +177,9 @@ cloudinary.config(
   api_secret = "k9tjvzXstvMkFIuqlJFm4_t_tcA",
 #   secure = True
 )
+
+
+
+SOCKET_SERVER = config("SOCKET_SERVER")
+
+django_heroku.settings(locals())

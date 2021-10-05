@@ -12,7 +12,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/profiles/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/profiles/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
 
@@ -114,7 +114,7 @@ response =
 
 
 
-2. Get question_id --------> api/profiles/1/
+2. Get profiles_id --------> api/profiles/1/
 
 var formdata = new FormData();
 
@@ -124,7 +124,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/profiles/1/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/profiles/1/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -156,13 +156,22 @@ response =
 
 
 
-3. Post question ----------> api/question/
+3. Put profiles ----------> api/profiles/
 
 var myHeaders = new Headers();
 myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MTA1NDc2LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MTA1MTc2fQ.bvj2dIyR9ceLSjoGhkMDco-7RHSHuBPAqu8erPow-_g");
 
 var formdata = new FormData();
-formdata.append("question", "What is  the difference between be creative and being inteligent");
+formdata.append("firstname", "Daniel");
+formdata.append("lastname", "zucci");
+formdata.append("sex","female")
+formdata.append("department","Bio chemist")
+formdata.append("level", 100l)
+formdata.append("institution","university of Lagos state")
+formdata.append("description","A very serious student")
+formdata.append("profile_pic",""image/upload/photos/2021/09/26/IMG_7955.jpg")
+formdata.append("longtitude":"13332344454")
+formdata.append(latitude":"-1223322333344)
 
 var requestOptions = {
   method: 'POST',
@@ -171,185 +180,12 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/question/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/profiles/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
 
 
-
-4. Delete question -----------> api/question/1/
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'DELETE',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/1/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-Answer
-
-1. Post Answer ---------->   api/answer/?type=question&id=1/
-
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VybmFtZSI6IkFkYW0iLCJleHAiOjE2MjQxMTI4NzEsImVtYWlsIjoiQWRhbUBnbWFpbC5jb20iLCJvcmlnX2lhdCI6MTYyNDExMjU3MX0.jvq3cUB_5fMGTVPrSVE5ucO5mwZ9marxH-d9SQ4pS6I");
-
-var formdata = new FormData();
-formdata.append("answer", "A creative person is one that has good visual prones and has good ability to build something innovative an inteligent person has strong logical prones and deal mainly with how things function");
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/answer/?type=question&id=1", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-response = 
-
-{
-    "id": 1,
-    "answer": "A creative person is one that has good visual prones and has good ability to build something innovative an inteligent person has strong logical prones and deal mainly with how things function",
-    "date_posted": "2021-06-19T14:52:23.698663Z"
-}
-
-
-
-Comment
-
-1. Comment Answer  ----------> api/comment/?type=answer&id=1
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjozLCJ1c2VybmFtZSI6InByaW5jZSIsImV4cCI6MTYyNDExMzM4NSwiZW1haWwiOiIiLCJvcmlnX2lhdCI6MTYyNDExMzA4NX0.l7zE-BYegY7P-VdIoMgV92ssPmNhGZy0odrdIfsCpO4");
-
-var formdata = new FormData();
-formdata.append("comment", "Wow that was a realy impressive answer");
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/comment/?type=answer&id=1", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response = 
-
-{
-    "id": 1,
-    "coment": "Wow that was a realy impressive answer",
-    "date_posted": "2021-06-19T14:52:23.698663Z"
-}
-
-
-Like
-
-1. Like Question ----------> api/like/?type=question&id=1
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MTE0NTI0LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MTE0MjI0fQ.JiYhYC-HOLddqNI-uskNQeijnh0zV3BOkTv0LXwxv9w");
-
-var formdata = new FormData();
-formdata.append("like", "L");
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/like/?type=question&id=1", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response = 
-
-{
-    "id": 1,
-    "like": "L",
-    "date_posted": "2021-06-19T14:52:23.698663Z"
-}
-
-2. Like Answer ----------> api/like/?type=answer&id=1
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MTE0NTI0LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MTE0MjI0fQ.JiYhYC-HOLddqNI-uskNQeijnh0zV3BOkTv0LXwxv9w");
-
-var formdata = new FormData();
-formdata.append("like", "L");
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/like/?type=answer&id=1", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response = 
-
-{
-    "id": 1,
-    "like": "L",
-    "date_posted": "2021-06-19T14:52:23.698663Z"
-}
-
-
-
-3. Like Comment ----------> api/like/?type=comment&id=1
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MTE0NTI0LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MTE0MjI0fQ.JiYhYC-HOLddqNI-uskNQeijnh0zV3BOkTv0LXwxv9w");
-
-var formdata = new FormData();
-formdata.append("like", "L");
-
-var requestOptions = {
-  method: 'POST',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/like/?type=comment&id=1", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response = 
-
-{
-    "id": 1,
-    "like": "L",
-    "date_posted": "2021-06-19T14:52:23.698663Z"
-}
 
 
 
@@ -372,7 +208,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/account/register/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/register/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -406,7 +242,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/account/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/account/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -438,7 +274,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/account/refresh/", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/account/refresh/", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
@@ -454,536 +290,7 @@ response
 }
 
 
-Profile 
 
-1. Get Profile --------> api/profiles/
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/profiles/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-{
-    "count": 4,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 1,
-            "user": {
-                "id": 1,
-                "username": "Truth",
-                "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-            },
-            "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-        },
-        {
-            "id": 2,
-            "user": {
-                "id": 2,
-                "username": "Adam",
-                "uri": "https://querybackendapi.herokuapp.com/api/user/Adam/"
-            },
-            "image": "https://querybackendapi.herokuapp.com/media/default.jpg"
-        },
-        {
-            "id": 3,
-            "user": {
-                "id": 3,
-                "username": "prince",
-                "uri": "https://querybackendapi.herokuapp.com/api/user/prince/"
-            },
-            "image": "https://querybackendapi.herokuapp.com/media/default.jpg"
-        },
-        {
-            "id": 4,
-            "user": {
-                "id": 4,
-                "username": "Pretty",
-                "uri": "https://querybackendapi.herokuapp.com/api/user/Pretty/"
-            },
-            "image": "https://querybackendapi.herokuapp.com/media/default.jpg"
-        }
-    ]
-}
-
-
-
-
-2. Get user_profile --------> api/profiles/1/
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/profiles/1/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-response
-
-
-{
-    "id": 1,
-    "user": {
-        "id": 1,
-        "username": "Truth",
-        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-    },
-    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg",
-    "bio": "A backend and software developer"
-}
-
-
-
-
-3. Update profile ----------> api/profiles/1/
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MDU5MTU0LCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MDU4ODU0fQ.lOfrJdOatM7C7Ig46rxxiAK1QI7EMcaRVGMhkAxP29E");
-
-var formdata = new FormData();
-formdata.append("image", fileInput.files[0], "/C:/Users/hp/Pictures/IMG_7955.jpg");
-formdata.append("bio", "A backend and software developer");
-
-var requestOptions = {
-  method: 'PUT',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/profiles/1/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-
-response
-
-
-{
-    "id": 1,
-    "user": {
-        "id": 1,
-        "username": "Truth",
-        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-    },
-    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg",
-    "bio": "A backend and software developer"
-}
-
-
-
-
-4. Delete account ----------> api/profiles/1/
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'DELETE',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/profiles/1/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-5. Get User_questions --------> api/username/questions/
-
-var myHeaders = new Headers();
-myHeaders.append("Authorization", "JWT eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6IlRydXRoIiwiZXhwIjoxNjI0MDYxNTgzLCJlbWFpbCI6InRydXRoQGdtYWlsLmNvbSIsIm9yaWdfaWF0IjoxNjI0MDYxMjgzfQ.n-mTXdoxpPxMXXKRs1Lv-RsHBKNG23onlC9POsOS_vM");
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  headers: myHeaders,
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/user/Truth/questions/", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "id": 2,
-            "question": "What is  the difference between be creative and being inteligent",
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        },
-        {
-            "id": 1,
-            "question": "What is  the best cryptocurrency to invest in",
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        }
-    ]
-}
-
-
-Search
-
-1. Search Question --------> api/question/?q=creative
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/?q=creative", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/2/",
-            "id": 2,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 0,
-            "answer_num": 0,
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        },
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/1/",
-            "id": 1,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 1,
-            "answer_num": 1,
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        }
-    ]
-}
-
-
-Ordering
-
-1. Ordering question by date_posted ascending -------> api/question/?ordering=date_posted
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/?ordering=date_posted", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-      {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/1/",
-            "id": 1,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 1,
-            "answer_num": 1,
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        },
-
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/2/",
-            "id": 2,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 0,
-            "answer_num": 0,
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        }
-    ]
-}
-
-
-2. Ordering question by date_posted descending -------> api/question/?ordering=-date_posted
-
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/?ordering=-date_posted", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/2/",
-            "id": 2,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 0,
-            "answer_num": 0,
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        },
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/1/",
-            "id": 1,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 1,
-            "answer_num": 1,
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        }
-    ]
-}
-
-3. Ordering question by date_posted ascending and Search
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/?ordering=date_posted&q=creative", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/2/",
-            "id": 2,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 0,
-            "answer_num": 0,
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        },
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/1/",
-            "id": 1,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 1,
-            "answer_num": 1,
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        }
-    ]
-}
-
-
-4. Ordering question by date_posted descending and Search
-
-var formdata = new FormData();
-
-var requestOptions = {
-  method: 'GET',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("https://querybackendapi.herokuapp.com/api/question/?ordering=-date_posted&q=creative", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
-
-
-response
-
-{
-    "count": 2,
-    "next": null,
-    "previous": null,
-    "results": [
-      {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/1/",
-            "id": 1,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 1,
-            "answer_num": 1,
-            "date_posted": "2021-06-19T00:17:14.496589Z"
-        },
-
-        {
-            "uri": "https://querybackendapi.herokuapp.com/api/question/2/",
-            "id": 2,
-            "profile": [
-                {
-                    "id": 1,
-                    "user": {
-                        "id": 1,
-                        "username": "Truth",
-                        "uri": "https://querybackendapi.herokuapp.com/api/user/Truth/"
-                    },
-                    "image": "https://querybackendapi.herokuapp.com/media/profile_pics/IMG_7955.jpg"
-                }
-            ],
-            "question": "What is  the difference between be creative and being inteligent",
-            "like_num": 0,
-            "answer_num": 0,
-            "date_posted": "2021-06-19T12:22:56.069340Z"
-        }
-    ]
-}
 
 
 pagination  --------> api/question/?limit=(limit number)
@@ -997,7 +304,7 @@ var requestOptions = {
   redirect: 'follow'
 };
 
-fetch("https://querybackendapi.herokuapp.com/api/question/?limit=5", requestOptions)
+fetch("https://huggiys.herokuapp.com/api/question/?limit=5", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
   .catch(error => console.log('error', error));
