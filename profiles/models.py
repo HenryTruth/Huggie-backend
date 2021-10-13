@@ -33,6 +33,18 @@ class Profile(models.Model):
     longtitude = models.IntegerField(null=True,blank=True)
     latitude = models.IntegerField(null=True,blank=True)
     is_online = models.DateTimeField(default=timezone.now)
+    attribute_1 = models.CharField(max_length=30,null=True,blank=True)
+    attribute_2 = models.CharField(max_length=30,null=True,blank=True)
+    attribute_3 = models.CharField(max_length=30,null=True,blank=True)
+    attribute_4 = models.CharField(max_length=30,null=True,blank=True)
+    attribute_5 = models.CharField(max_length=30,null=True,blank=True)
+    picture_1 = CloudinaryField('image',null=True,blank=True)
+    picture_2 = CloudinaryField('image',null=True,blank=True)
+    picture_3 = CloudinaryField('image',null=True,blank=True)
+    picture_4 = CloudinaryField('image',null=True,blank=True)
+    picture_5 = CloudinaryField('image',null=True,blank=True)
+    picture_6 = CloudinaryField('image',null=True,blank=True)
+    
 
 
 

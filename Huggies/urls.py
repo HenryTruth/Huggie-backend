@@ -23,7 +23,8 @@ urlpatterns = [
     path('api/profiles/', include('profiles.api.urls', namespace='profile-api')),
     path('api/account/', include('account.api.urls', namespace='account-api')),
     path('api/message/', include('message.api.urls', namespace='message-api')),
-    path('api/contact/', include('contact.api.urls', namespace='contact-api'))
+    path('api/contact/', include('contact.api.urls', namespace='contact-api')),
+    path('api/user/', include('account.api.users.urls', namespace='api-user'))
 ]
 
 
