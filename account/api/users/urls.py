@@ -7,7 +7,7 @@ from .views import UserDetailAPIView
 app_name='user'
 
 urlpatterns = [
-    path('<id>/', UserDetailAPIView.as_view(), name='detail'),
+    path('<int:id>/', UserDetailAPIView.as_view(), name='detail'),
     # path('<username>/questions/', UserQuestionAPIView.as_view(), name='question-list'),
 
 ]
