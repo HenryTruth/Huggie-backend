@@ -6,8 +6,9 @@ from rest_framework_jwt.settings import api_settings
 expire_delta = api_settings.JWT_REFRESH_EXPIRATION_DELTA
 
 
-def jwt_response_payload_handler(token, message, status_code, user=None, request=None):
+def jwt_response_payload_handler(id, token, message, status_code, user=None, request=None):
     return {
+        'id':user.id,
         'token':token,
         'user': user.username,
         'expires': timezone.now() + expire_delta - datetime.timedelta(seconds=200),

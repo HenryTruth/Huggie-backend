@@ -38,7 +38,7 @@ class AuthView(APIView):
             token = jwt_encode_handler(payload)
             message = "Successfull"
             status_code = 200
-            response = jwt_reponse_payload_handler(token, message, status_code, user, request=request)
+            response = jwt_reponse_payload_handler(user,token, message, status_code, user, request=request)
             data = response
             return Response(data)
         except:
