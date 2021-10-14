@@ -146,20 +146,20 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
-CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS')
+# CORS_ALLOW_METHODS = ('GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS')
 
 
-CORS_ALLOW_HEADERS = (
-    'x-requested-with',
-    'content-type',
-    'accept',
-    'origin',
-    'authorization',
-    'accept-encoding',
-    'x-csrftoken',
-    'access-control-allow-origin',
-    'content-disposition'
-)
+# CORS_ALLOW_HEADERS = (
+#     'x-requested-with',
+#     'content-type',
+#     'accept',
+#     'origin',
+#     'authorization',
+#     'accept-encoding',
+#     'x-csrftoken',
+#     'access-control-allow-origin',
+#     'content-disposition'
+# )
 
 CORS_ALLOW_ALL_ORIGINS = True
 
