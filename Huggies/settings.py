@@ -167,7 +167,9 @@ CORS_ALLOWED_ORIGINS = [
     "https://example.com",
     "https://sub.example.com",
     "http://localhost:8080",
+    "https://localhost:8081",
     "http://127.0.0.1:8081",
+    "https://127.0.0.1:8081",
 ]
 
 # Default primary key field type
