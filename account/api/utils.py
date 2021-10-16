@@ -11,7 +11,7 @@ def jwt_response_payload_handler(id, token, message, status_code, user=None, req
         'id':user.id,
         'token':token,
         'user': user.username,
-        'expires': timezone.now() + expire_delta - datetime.timedelta(seconds=200),
+        'expires': timezone.now() + expire_delta - datetime.timedelta(seconds=1210000),
         'message':message,
         'status_code':status_code
     }
