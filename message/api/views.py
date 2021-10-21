@@ -29,18 +29,6 @@ def handleRequest(serializerData):
             notification), headers=headers)
     except Exception as e:
         pass 
-
-
-
-
-
-
-
-
-
-
-
-        
     return True
 
 

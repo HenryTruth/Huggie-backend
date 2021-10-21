@@ -183,4 +183,6 @@ cloudinary.config(
 
 SOCKET_SERVER = 'http://localhost:9000/server'
 
+NOTIFICATION_SERVER = 'http://localhost:9000/server/request'
+
 django_heroku.settings(locals())
