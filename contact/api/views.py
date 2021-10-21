@@ -78,26 +78,26 @@ class MyRequestsView(ModelViewSet):
         return Response(serializer.data, status=201)
 
 
-class ContactAPIView(mixins.CreateModelMixin,
-generics.ListAPIView):
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
-    # # authentication_classes = [SessionAuthentication]
-    serializer_class = MyRequestsSerializer
-    passed_id = None
+# class ContactAPIView(mixins.CreateModelMixin,
+# generics.ListAPIView):
+#     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+#     # # authentication_classes = [SessionAuthentication]
+#     serializer_class = MyRequestsSerializer
+#     passed_id = None
 
-    def get_queryset(self):
-        request = self.request
-        qs = MyRequests.objects.all()
-        query = request.GET.get('q')
-        if query is not None:
-            qs = qs.filter(content__icontains=query)
-        return qs
+#     def get_queryset(self):
+#         request = self.request
+#         qs = MyRequests.objects.all()
+#         query = request.GET.get('q')
+#         if query is not None:
+#             qs = qs.filter(content__icontains=query)
+#         return qs
 
-    def post(self, request, *args, **kwargs):
-        return self.create(request, *args, **kwargs)
+#     def post(self, request, *args, **kwargs):
+#         return self.create(request, *args, **kwargs)
 
-    def perform_create(self):
-        return serializers.save(self.request.user)
+#     def perform_create(self):
+#         return serializers.save(self.request.user)
 
 
 
