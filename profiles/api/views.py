@@ -13,14 +13,16 @@ generics.ListAPIView):
     # # authentication_classes = [SessionAuthentication]
     serializer_class = ProfileSerializer
     passed_id = None
+    search_fields  = ('=sex', 'department', 'level', 'institution')
+    queryset = Profile.objects.all()
 
-    def get_queryset(self):
-        request = self.request
-        qs = Profile.objects.all()
-        query = request.GET.get('q')
-        if query is not None:
-            qs = qs.filter(content__icontains=query)
-        return qs
+    # def get_queryset(self):
+    #     request = self.request
+    #     qs = Profile.objects.all()
+    #     query = request.GET.get('q')
+    #     # if query is not None:
+    #     #     qs = qs.filter(content__icontains=query)
+    #     return qs
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
