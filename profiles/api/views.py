@@ -13,7 +13,7 @@ generics.ListAPIView):
     # # authentication_classes = [SessionAuthentication]
     serializer_class = ProfileSerializer
     passed_id = None
-    search_fields  = ('=sex', '^department', '^level', '=institution')
+    search_fields  = ('=sex', '=department', '^level', '=institution')
     queryset = Profile.objects.all()
 
     # def get_queryset(self):
